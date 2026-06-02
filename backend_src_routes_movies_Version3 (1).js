@@ -15,11 +15,23 @@ router.get('/search', async (req, res) => {
           api_key: TMDB_API_KEY,
           query,
         },
+        headers: {
+          'Accept': 'application/json',
+        },
       }
     );
-    res.json(response.data);
+    // Ensure response is valid JSON
+    if (response.data && typeof response.data === 'object') {
+      res.json(response.data);
+    } else {
+      res.status(500).json({ msg: 'Invalid response format from TMDB' });
+    }
   } catch (error) {
-    res.status(500).json({ msg: 'TMDB search failed', error: error.message });
+    console.error('Error:', error.message);
+    res.status(500).json({ 
+      msg: 'TMDB search failed', 
+      error: error.message 
+    });
   }
 });
 
