@@ -1,5 +1,11 @@
 .DS_Store
 
+# Environment variables - DO NOT COMMIT
+.env
+.env.local
+.env.*.local
+Env.
+
 # Images
 images/avatars/
 images/captchas/
@@ -17,3 +23,14 @@ sized/
 thumbs/
 _thumbs/
 */expressionengine/cache/*
+
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
